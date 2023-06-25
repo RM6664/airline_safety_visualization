@@ -1,0 +1,37 @@
+---
+title: "Week_5_Activity"
+author: "Raghavendra"
+date: "2023-06-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r visualization, echo=TRUE}
+cran_mirror <- "https://cran.r-project.org"
+
+options(repos = cran_mirror)
+
+install.packages("knitr")
+install.packages("ggplot2")
+library(ggplot2)
+
+airline_safety_df <- read.csv("C:/Users/ragha/Documents/syllabus/ANA_515/airline-safety.csv")
+
+scatter_plot <- ggplot(airline_safety_df , aes(x = incidents_00_14 , y = fatalities_00_14))+
+  geom_point()+
+  labs(title = "Incidents Vs Fatalities" , x = "Number of Incidents" , y= "Number of Fatalities")
+
+scatter_plot
+
+histogram_plot <- ggplot(airline_safety_df , aes(x = fatalities_00_14)) + 
+  geom_histogram( colour = 1 , fill = "skyblue", 
+                 bins = 15) +
+  labs(title = "Distribution of Fatalities",
+       x = "Number of fatalities",
+       y = "Frequency")
+
+histogram_plot
+```
